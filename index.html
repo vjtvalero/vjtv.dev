@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vincent James Valero — Full-Stack Developer & AI Engineer</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Playfair+Display:wght@700;900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode">☀️</button>
+
+        <!-- MASTHEAD -->
+        <header class="masthead">
+            <div class="masthead-top">
+                <span class="masthead-meta">Vol. I &mdash; Est. 2026</span>
+                <span class="masthead-meta" id="todays-date"></span>
+                <span class="masthead-meta"
+                    ><mark>Available for work</mark></span
+                >
+            </div>
+            <div class="masthead-rule"></div>
+            <div class="masthead-title-row">
+                <h1 class="masthead-name">
+                    VJTV<span class="masthead-dot">.</span>DEV
+                </h1>
+            </div>
+            <p class="masthead-deck">
+                Vincent James Valero &mdash; Senior Software Developer &amp; AI
+                Engineer &mdash; Manila, PH
+            </p>
+            <div class="masthead-rule"></div>
+            <nav class="masthead-nav">
+                <a href="#ai">AI</a>
+                <a href="#blog">Blog</a>
+                <a href="#work">Work</a>
+                <a href="#skills">Skills</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="masthead-rule thick"></div>
+        </header>
+
+        <!-- FRONT PAGE GRID -->
+        <main class="front-page">
+            <!-- LEFT COLUMN -->
+            <aside class="col col-left">
+                <!-- About -->
+                <section class="block" id="about">
+                    <h2 class="block-heading">About</h2>
+                    <p>
+                        Senior software developer based in Manila with 10+ years
+                        across full-stack web, platform engineering, and
+                        infrastructure automation. Currently building internal
+                        developer platforms at Standard Chartered, and
+                        co-founding EasyChurchPH on the side.
+                    </p>
+                    <p>
+                        Lately gone deep on agentic AI — building autonomous
+                        workflows, engineering prompts for production, and
+                        integrating MCP servers into real systems.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-row">
+                            <span class="stat-n">10+</span>
+                            <span class="stat-l">Years experience</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-n">20+</span>
+                            <span class="stat-l">Projects shipped</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-n">5+</span>
+                            <span class="stat-l">Industries served</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="col-rule"></div>
+
+                <!-- Skills -->
+                <section class="block" id="skills">
+                    <h2 class="block-heading">Skills</h2>
+
+                    <h3 class="skill-cat">AI &amp; LLMs</h3>
+                    <ul class="skill-list">
+                        <li>Claude API &middot; OpenAI API</li>
+                        <li>LangChain &middot; LangGraph</li>
+                        <li>RAG pipelines</li>
+                        <li>Vector DBs (Pinecone, pgvector)</li>
+                        <li>MCP (Model Context Protocol)</li>
+                        <li>Prompt Engineering</li>
+                        <li>AI Agents &middot; Tool Use</li>
+                    </ul>
+
+                    <h3 class="skill-cat">Frontend</h3>
+                    <ul class="skill-list">
+                        <li>ReactJS / Next.js</li>
+                        <li>TypeScript / JavaScript</li>
+                        <li>CSS / Tailwind</li>
+                    </ul>
+
+                    <h3 class="skill-cat">Backend</h3>
+                    <ul class="skill-list">
+                        <li>Node.js</li>
+                        <li>Python &middot; Go</li>
+                        <li>PHP / Laravel</li>
+                        <li>REST &amp; GraphQL</li>
+                    </ul>
+
+                    <h3 class="skill-cat">Database</h3>
+                    <ul class="skill-list">
+                        <li>MySQL &middot; PostgreSQL</li>
+                        <li>MongoDB &middot; Redis</li>
+                        <li>PlanetScale &middot; Atlas</li>
+                    </ul>
+
+                    <h3 class="skill-cat">DevOps &amp; Cloud</h3>
+                    <ul class="skill-list">
+                        <li>Azure DevOps</li>
+                        <li>Amazon Web Services (AWS)</li>
+                        <li>Docker &middot; CI/CD</li>
+                        <li>RHEL &middot; Windows Server</li>
+                        <li>Bash &middot; PowerShell</li>
+                    </ul>
+
+                    <h3 class="skill-cat">QA &amp; Testing</h3>
+                    <ul class="skill-list">
+                        <li>QA Strategy &amp; Planning</li>
+                        <li>Cucumber (BDD)</li>
+                        <li>Azure DevOps Test Plans</li>
+                        <li>Proprietary test framework</li>
+                        <li>Test automation</li>
+                    </ul>
+                </section>
+
+                <div class="col-rule"></div>
+
+                <!-- Education -->
+                <section class="block">
+                    <h2 class="block-heading">Education</h2>
+                    <p
+                        style="
+                            font-size: 0.88rem;
+                            font-weight: 600;
+                            margin-bottom: 0.2rem;
+                        "
+                    >
+                        Polytechnic University of the Philippines
+                    </p>
+                    <p
+                        style="
+                            font-size: 0.82rem;
+                            color: #555;
+                            margin-bottom: 0.4rem;
+                        "
+                    >
+                        B.S. Information Technology &mdash; 2010&ndash;2014
+                    </p>
+                    <ul class="skill-list">
+                        <li>POS System for a Supermarket</li>
+                        <li>Patient Information System</li>
+                    </ul>
+                </section>
+
+                <div class="col-rule"></div>
+
+                <!-- Achievement -->
+                <section class="block">
+                    <h2 class="block-heading">Achievement</h2>
+                    <div class="stat-row" style="background: var(--yellow)">
+                        <span class="stat-n">&#x1F3C6;</span>
+                        <span class="stat-l">Hack4PH Champion</span>
+                    </div>
+                    <p
+                        style="
+                            font-size: 0.82rem;
+                            color: #555;
+                            margin-top: 0.7rem;
+                        "
+                    >
+                        1st Philippine E-Government Innovation Challenge &mdash;
+                        DICT, Nov 2018. Built <strong>WorkPanda</strong>, a
+                        telecommuting app that won the Hack2Work challenge.
+                    </p>
+                </section>
+
+                <div class="col-rule"></div>
+
+                <!-- Contact blurb -->
+                <section class="block contact-block" id="contact">
+                    <h2 class="block-heading">Get in touch</h2>
+                    <p>
+                        Open to new projects, contracts, and interesting
+                        problems.
+                    </p>
+                    <a href="mailto:vjtvalero@gmail.com" class="inline-btn"
+                        >vjtvalero@gmail.com &rarr;</a
+                    >
+                    <div class="social-row">
+                        <a href="https://github.com/vjtvalero">GitHub</a>
+                        <a href="https://www.linkedin.com/in/vjtvalero/"
+                            >LinkedIn</a
+                        >
+                        <a
+                            href="#"
+                            onclick="
+                                window.print()
+                                return false
+                            "
+                            >Resume &darr;</a
+                        >
+                    </div>
+                </section>
+            </aside>
+
+            <!-- CENTER COLUMN -->
+            <div class="col col-center">
+                <!-- AI Feature -->
+                <section class="block feature-block" id="ai">
+                    <div class="feature-kicker">
+                        Featured &mdash; AI Specialties
+                    </div>
+                    <h2 class="feature-headline">
+                        Building agentic<br />frameworks that<br />move
+                        companies forward.
+                    </h2>
+                    <p class="feature-lede">
+                        Innovating from within — designing internal AI
+                        frameworks that automate real workflows, reduce toil,
+                        and bring LLM capabilities into production systems.
+                    </p>
+                    <div class="feature-divider"></div>
+                    <div class="ai-items">
+                        <div class="ai-item">
+                            <span class="ai-item-label"
+                                >Agentic AI Development</span
+                            >
+                            <p>
+                                Autonomous multi-step agent pipelines with
+                                Claude Code. Tool-calling loops, long-horizon
+                                tasks, human-in-the-loop flows.
+                            </p>
+                        </div>
+                        <div class="ai-item">
+                            <span class="ai-item-label"
+                                >Prompt Engineering</span
+                            >
+                            <p>
+                                Structured system prompts, few-shot examples,
+                                and chain-of-thought scaffolds that unlock model
+                                capabilities at production quality.
+                            </p>
+                        </div>
+                        <div class="ai-item">
+                            <span class="ai-item-label">AI Optimizations</span>
+                            <p>
+                                Reducing latency, token costs, and hallucination
+                                rates via context compression, RAG, caching, and
+                                fine-tuning strategies.
+                            </p>
+                        </div>
+                        <div class="ai-item ai-item-highlight">
+                            <span class="ai-item-label"
+                                >MCP &mdash; Model Context Protocol</span
+                            >
+                            <p>
+                                Designing and integrating MCP servers to extend
+                                AI agents with custom tools, data sources, and
+                                external APIs.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="col-rule"></div>
+
+                <!-- Blog -->
+                <section class="block" id="blog">
+                    <h2 class="block-heading">Blog</h2>
+                    <div class="articles">
+                        <article class="article article-plain">
+                            <div class="article-meta">
+                                <span class="article-tag">Career</span>
+                                <span class="article-year">Mar 2026</span>
+                            </div>
+                            <h3 class="article-title">
+                                <a
+                                    href="blog/the-plumber-always-has-a-job.html"
+                                >
+                                    The Plumber Always Has a Job: Why Deep
+                                    Knowledge Still Wins in the Age of AI
+                                </a>
+                            </h3>
+                            <p class="article-desc">
+                                A software engineer walks into a conversation
+                                about OSS contributions and walks out with a
+                                career philosophy. Here's what that journey
+                                revealed.
+                            </p>
+                            <a
+                                href="blog/the-plumber-always-has-a-job.html"
+                                class="inline-link"
+                                >Read &rarr;</a
+                            >
+                        </article>
+                    </div>
+                </section>
+
+                <div class="col-rule"></div>
+
+                <!-- Experience -->
+                <section class="block" id="work">
+                    <h2 class="block-heading">Experience</h2>
+                    <div class="articles">
+                        <article class="article article-yellow">
+                            <div class="article-meta">
+                                <span class="article-tag"
+                                    >Agentic AI Testing</span
+                                >
+                                <span class="article-year"
+                                    >Jan 2024 &ndash; Present</span
+                                >
+                            </div>
+                            <h3 class="article-title">
+                                Standard Chartered Group Services
+                            </h3>
+                            <p class="article-desc">
+                                Senior Software Developer. Currently applying
+                                agentic AI to transform QA — building autonomous
+                                testing workflows that reduce manual effort,
+                                surface regressions earlier, and bring
+                                LLM-driven intelligence into the quality
+                                engineering process.
+                            </p>
+                            <p
+                                class="article-desc"
+                                style="
+                                    font-size: 0.82rem;
+                                    color: #555;
+                                    margin-top: 0.3rem;
+                                "
+                            >
+                                Previously: Platform Engineering &middot;
+                                Internal AI Platform Development
+                            </p>
+                            <div class="article-stack">
+                                <span>Claude Code</span><span>MCP</span>
+                                <span>Python</span><span>TypeScript</span>
+                                <span>Proprietary Test Framework</span>
+                            </div>
+                        </article>
+
+                        <article class="article article-plain">
+                            <div class="article-meta">
+                                <span class="article-tag">Co-Founder</span>
+                                <span class="article-year"
+                                    >Jan 2023 &ndash; Present</span
+                                >
+                            </div>
+                            <h3 class="article-title">EasyChurchPH</h3>
+                            <p class="article-desc">
+                                Technical Co-Founder. Architected the full
+                                infrastructure and application stack for a
+                                platform boosting church engagement and
+                                community growth. Sole engineer translating
+                                business needs into shipped product.
+                            </p>
+                            <div class="article-stack">
+                                <span>ReactJS</span><span>NodeJS</span
+                                ><span>MySQL</span><span>Go</span
+                                ><span>Docker</span><span>DigitalOcean</span>
+                            </div>
+                        </article>
+
+                        <article class="article article-plain">
+                            <div class="article-meta">
+                                <span class="article-tag">Full-Stack</span>
+                                <span class="article-year"
+                                    >Jun 2019 &ndash; Dec 2023</span
+                                >
+                            </div>
+                            <h3 class="article-title">Clickplay Sportsgame</h3>
+                            <p class="article-desc">
+                                Full Stack Web Developer across two products:
+                                AAMS (courier auditing system) and a B2C
+                                SportsBook &amp; Casino platform. Feature owner
+                                for online wallets, casino providers, agent
+                                system, and backoffice. Led code reviews and
+                                technical documentation.
+                            </p>
+                            <div class="article-stack">
+                                <span>ReactJS</span><span>PHP</span
+                                ><span>Laravel</span><span>MySQL</span
+                                ><span>Redis</span><span>AWS S3</span
+                                ><span>Microservices</span>
+                            </div>
+                        </article>
+
+                        <article class="article article-plain">
+                            <div class="article-meta">
+                                <span class="article-tag">Full-Stack</span>
+                                <span class="article-year"
+                                    >Jun 2018 &ndash; Jun 2019</span
+                                >
+                            </div>
+                            <h3 class="article-title">CloudPanda PH Inc.</h3>
+                            <p class="article-desc">
+                                Built an admin system for an e-wallet app and
+                                led development of a Port, Land and Water System
+                                for a Mindanao government agency — including
+                                SCRUM lead, architecture design, and
+                                requirements gathering.
+                            </p>
+                            <div class="article-stack">
+                                <span>Angular</span><span>GraphQL</span
+                                ><span>NodeJS</span><span>MySQL</span
+                                ><span>PHP CodeIgniter</span>
+                            </div>
+                        </article>
+
+                        <article class="article article-plain">
+                            <div class="article-meta">
+                                <span class="article-tag">Government / IT</span>
+                                <span class="article-year"
+                                    >Jul 2014 &ndash; Jun 2018</span
+                                >
+                            </div>
+                            <h3 class="article-title">
+                                Dept. of Social Welfare &amp; Development
+                            </h3>
+                            <p class="article-desc">
+                                Information Technology Officer. Lead of software
+                                development and R&amp;D. Delivered the DSWD
+                                Portal, ICT Support Ticketing System, and
+                                Appointment System. Also managed Active
+                                Directory and ICT infrastructure.
+                            </p>
+                            <div class="article-stack">
+                                <span>PHP</span><span>JavaScript</span
+                                ><span>MySQL</span><span>Active Directory</span>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <span>VJTV.DEV &mdash; Built with HTML, CSS &amp; spite.</span>
+            <span>&copy; 2026</span>
+        </footer>
+
+        <script src="main.js"></script>
+    </body>
+</html>
