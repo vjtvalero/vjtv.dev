@@ -45,7 +45,7 @@
 [data-theme="dark"] .feature-lede { color: #aaa; border-left-color: #8b5cf6; }
 [data-theme="dark"] .ai-item { background: #1a1a1a; }
 [data-theme="dark"] .ai-item p { color: #aaa; }
-[data-theme="dark"] .ai-item-highlight { background: #1a0a2e; border-color: #8b5cf6; }
+[data-theme="dark"] .ai-item-highlight { background: rgba(139, 92, 246, 0.15); border-color: #8b5cf6; }
 [data-theme="dark"] .stat-row { background: #1a0a2e; }
 [data-theme="dark"] .inline-btn { background: #8b5cf6; color: #fff; }
 [data-theme="dark"] .social-row a { color: #888; }
@@ -360,7 +360,7 @@ p:last-child { margin-bottom: 0; }
 }
 .ai-item p { font-size: 0.85rem; margin-bottom: 0; color: #333; }
 .ai-item-highlight {
-  background: var(--yellow);
+  background: rgba(245, 230, 66, 0.25);
   border: var(--border);
   box-shadow: var(--shadow);
 }
