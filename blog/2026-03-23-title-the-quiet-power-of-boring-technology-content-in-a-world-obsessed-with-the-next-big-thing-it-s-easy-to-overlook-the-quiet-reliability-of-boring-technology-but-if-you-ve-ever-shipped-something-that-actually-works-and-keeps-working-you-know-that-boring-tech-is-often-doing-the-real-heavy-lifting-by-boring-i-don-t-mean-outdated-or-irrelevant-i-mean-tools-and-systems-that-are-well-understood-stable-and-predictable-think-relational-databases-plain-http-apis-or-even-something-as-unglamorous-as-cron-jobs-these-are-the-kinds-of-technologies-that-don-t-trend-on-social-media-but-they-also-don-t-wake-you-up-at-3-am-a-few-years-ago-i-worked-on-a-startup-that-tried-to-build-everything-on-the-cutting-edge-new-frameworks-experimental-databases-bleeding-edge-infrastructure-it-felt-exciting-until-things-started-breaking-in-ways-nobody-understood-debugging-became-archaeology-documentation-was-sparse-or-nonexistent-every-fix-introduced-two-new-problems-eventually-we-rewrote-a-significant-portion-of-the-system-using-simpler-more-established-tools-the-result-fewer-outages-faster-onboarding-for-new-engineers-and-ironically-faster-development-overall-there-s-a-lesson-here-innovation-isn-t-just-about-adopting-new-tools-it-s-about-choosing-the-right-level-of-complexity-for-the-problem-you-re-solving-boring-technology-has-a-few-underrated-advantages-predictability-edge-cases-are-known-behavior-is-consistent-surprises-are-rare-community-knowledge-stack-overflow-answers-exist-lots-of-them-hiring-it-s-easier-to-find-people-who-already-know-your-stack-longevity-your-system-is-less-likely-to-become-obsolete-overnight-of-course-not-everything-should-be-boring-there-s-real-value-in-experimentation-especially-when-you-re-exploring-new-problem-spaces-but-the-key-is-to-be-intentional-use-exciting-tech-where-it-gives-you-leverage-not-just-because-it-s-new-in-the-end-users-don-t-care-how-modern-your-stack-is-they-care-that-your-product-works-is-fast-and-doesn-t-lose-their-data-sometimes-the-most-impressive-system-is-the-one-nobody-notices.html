@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Quiet Power of Boring Technology — VJTV.DEV</title>
+        <meta name="description" content="In a world obsessed with the next big thing, boring technology often does the real heavy lifting. Why stable, well-understood tools might be your best choice." />
+        <link rel="stylesheet" href="../style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Playfair+Display:wght@700;900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            .blog-page {
+                max-width: 720px;
+                margin: 0 auto;
+                padding: 2rem clamp(1rem, 4vw, 2.5rem) 4rem;
+            }
+            .blog-back {
+                font-family: var(--font-mono);
+                font-size: 0.75rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: #555;
+                display: inline-block;
+                margin-bottom: 2rem;
+                text-decoration: underline;
+                text-underline-offset: 3px;
+            }
+            .blog-back:hover {
+                color: var(--black);
+            }
+            .blog-kicker {
+                font-family: var(--font-mono);
+                font-size: 0.7rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: #555;
+                margin-bottom: 0.6rem;
+            }
+            .blog-title {
+                font-family: var(--font-serif);
+                font-size: clamp(1.8rem, 5vw, 3rem);
+                font-weight: 900;
+                line-height: 1.08;
+                letter-spacing: -0.02em;
+                margin-bottom: 1rem;
+            }
+            .blog-meta {
+                font-family: var(--font-mono);
+                font-size: 0.72rem;
+                font-weight: 700;
+                color: #888;
+                border-top: var(--border);
+                border-bottom: var(--border);
+                padding: 0.5rem 0;
+                margin-bottom: 2rem;
+                display: flex;
+                gap: 1.5rem;
+            }
+            .blog-body {
+                font-size: 1rem;
+                line-height: 1.7;
+                color: #222;
+            }
+            .blog-body h2 {
+                font-family: var(--font-serif);
+                font-size: 1.4rem;
+                font-weight: 700;
+                margin: 2rem 0 0.6rem;
+                border-bottom: 2px solid var(--black);
+                padding-bottom: 0.3rem;
+            }
+            .blog-body p {
+                margin-bottom: 1rem;
+            }
+            .blog-body ul {
+                list-style: none;
+                padding-left: 0;
+                margin-bottom: 1rem;
+            }
+            .blog-body ul li {
+                padding: 0.2rem 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            }
+            .blog-body ul li::before {
+                content: '— ';
+                font-weight: 700;
+                color: #aaa;
+            }
+            .blog-body code {
+                font-family: var(--font-mono);
+                font-size: 0.85em;
+                background: rgba(0, 0, 0, 0.06);
+                padding: 0.1em 0.35em;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            .blog-callout {
+                background: var(--yellow);
+                border-left: 4px solid var(--black);
+                padding: 0.8rem 1rem;
+                margin: 1.5rem 0;
+                font-weight: 500;
+            }
+
+            [data-theme='dark'] .blog-back {
+                color: #aaa;
+            }
+            [data-theme='dark'] .blog-back:hover {
+                color: #e0dbd0;
+            }
+            [data-theme='dark'] .blog-kicker {
+                color: #aaa;
+            }
+            [data-theme='dark'] .blog-meta {
+                color: #777;
+            }
+            [data-theme='dark'] .blog-body {
+                color: #d4cfc6;
+            }
+            [data-theme='dark'] .blog-body h2 {
+                border-bottom-color: #e0dbd0;
+            }
+            [data-theme='dark'] .blog-body ul li {
+                border-bottom-color: rgba(255, 255, 255, 0.08);
+            }
+            [data-theme='dark'] .blog-body ul li::before {
+                color: #666;
+            }
+            [data-theme='dark'] .blog-body code {
+                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(255, 255, 255, 0.12);
+                color: #e0dbd0;
+            }
+            [data-theme='dark'] .blog-callout {
+                color: #111;
+            }
+        </style>
+    </head>
+    <body>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode">
+            ☀️
+        </button>
+        <div class="blog-page">
+            <a href="/#blog" class="blog-back">&larr; Back to home</a>
+
+            <div class="blog-kicker">Technology &mdash; Mar 2026</div>
+            <h1 class="blog-title">
+                The Quiet Power of Boring Technology
+            </h1>
+            <div class="blog-meta">
+                <span>Vincent James Valero</span>
+                <span>~6 min read</span>
+            </div>
+
+            <div class="blog-body">
+                <p>
+                    In a world obsessed with the next big thing, it's easy to overlook the quiet reliability of "boring" technology. But if you've ever shipped something that actually works—and keeps working—you know that boring tech is often doing the real heavy lifting.
+                </p>
+                <p>
+                    By "boring," I don't mean outdated or irrelevant. I mean tools and systems that are well-understood, stable, and predictable. Think relational databases, plain HTTP APIs, or even something as unglamorous as cron jobs. These are the kinds of technologies that don't trend on social media—but they also don't wake you up at 3 AM.
+                </p>
+
+                <h2>When Cutting Edge Cuts You</h2>
+                <p>
+                    A few years ago, I worked on a startup that tried to build everything on the cutting edge. New frameworks, experimental databases, bleeding-edge infrastructure. It felt exciting—until things started breaking in ways nobody understood. Debugging became archaeology. Documentation was sparse or nonexistent. Every fix introduced two new problems.
+                </p>
+                <p>
+                    We had a NoSQL database that promised infinite scale but couldn't handle our modest traffic patterns. A reactive framework that was supposed to make everything faster but made simple operations incomprehensibly complex. A microservices architecture with so many moving parts that nobody understood how data flowed through the system anymore.
+                </p>
+                <p>
+                    Eventually, we rewrote a significant portion of the system using simpler, more established tools. PostgreSQL instead of the trendy document database. Express.js instead of the reactive framework. A monolith instead of dozens of microservices. The result? Fewer outages, faster onboarding for new engineers, and—ironically—faster development overall.
+                </p>
+
+                <div class="blog-callout">
+                    There's a lesson here: innovation isn't just about adopting new tools. It's about choosing the right level of complexity for the problem you're solving.
+                </div>
+
+                <h2>The Underrated Advantages</h2>
+                <p>
+                    Boring technology has a few underrated advantages that only become apparent when you've been burned by the alternative:
+                </p>
+                <ul>
+                    <li><strong>Predictability</strong> — Edge cases are known. Behavior is consistent. Surprises are rare.</li>
+                    <li><strong>Community Knowledge</strong> — Stack Overflow answers exist. Lots of them. Error messages have been Googled a million times before.</li>
+                    <li><strong>Hiring</strong> — It's easier to find people who already know your stack. Onboarding is faster.</li>
+                    <li><strong>Longevity</strong> — Your system is less likely to become obsolete overnight when the maintainer moves on to their next project.</li>
+                    <li><strong>Operational Maturity</strong> — Monitoring tools exist. Best practices are documented. Production war stories are shared freely.</li>
+                </ul>
+                <p>
+                    Consider PostgreSQL. It's been around since 1996. Not exactly the hottest topic at tech conferences. But it handles JSON, full-text search, geospatial queries, and scales to petabytes. Most applications will never outgrow it. More importantly, when something goes wrong, there's a deep well of knowledge about how to fix it.
+                </p>
+
+                <h2>The Art of Strategic Boredom</h2>
+                <p>
+                    Of course, not everything should be boring. There's real value in experimentation, especially when you're exploring new problem spaces or when boring solutions genuinely can't solve your problem. But the key is to be intentional about where you spend your complexity budget.
+                </p>
+                <p>
+                    Use exciting tech where it gives you real leverage—not just because it's new. If you're building a real-time collaboration tool, WebRTC might be worth the complexity. If you're building a content management system, maybe stick with what works.
+                </p>
+                <p>
+                    Dan McKinley popularized the concept of "innovation tokens"—the idea that you have a limited budget for introducing new, unproven technology. Spend those tokens wisely. Use them on the parts of your system that are genuinely novel or where established solutions fall short.
+                </p>
+
+                <h2>Boring is a Feature, Not a Bug</h2>
+                <p>
+                    The most successful companies I've worked with have one thing in common: their core infrastructure is mind-numbingly boring. They use technologies that have been battle-tested by millions of other applications. Their databases are relational. Their APIs are REST over HTTP. Their deployments are straightforward.
+                </p>
+                <p>
+                    This isn't because they lack technical sophistication. It's because they understand that their competitive advantage doesn't come from having the most cutting-edge tech stack. It comes from solving customer problems better than anyone else. And you can't solve customer problems if you're constantly fighting your own infrastructure.
+                </p>
+                <p>
+                    Netflix famously runs on Java and MySQL—technologies that were old when the company started streaming. Their innovation happens at the application layer, in their recommendation algorithms and content delivery systems. The boring foundation gives them the stability to innovate where it matters.
+                </p>
+
+                <h2>The Maintenance Burden Nobody Talks About</h2>
+                <p>
+                    Here's what nobody mentions when they're evangelizing the latest framework: maintenance. Every piece of technology in your stack has an ongoing cost. It needs updates, security patches, monitoring, and debugging. The more exotic your choices, the higher that cost becomes.
+                </p>
+                <p>
+                    With boring technology, that cost is distributed across a huge community. Thousands of companies are running similar stacks, finding similar problems, and sharing solutions. With cutting-edge technology, you're often on your own.
+                </p>
+                <p>
+                    I've seen teams spend weeks trying to debug issues that would have been solved in minutes with more established tools. I've seen promising projects die because they chose technologies that couldn't scale with the team's needs and couldn't be replaced without a complete rewrite.
+                </p>
+
+                <h2>When Boring Becomes Exciting</h2>
+                <p>
+                    There's something deeply satisfying about building on a foundation you can trust. When your database is reliable, your APIs are predictable, and your deployments are smooth, you can focus on the problems that actually matter to your users.
+                </p>
+                <p>
+                    Boring technology frees up mental bandwidth. Instead of wondering if your framework is causing that weird bug, you can focus on building features. Instead of reading documentation for the latest beta release, you can spend time understanding your users' needs.
+                </p>
+                <p>
+                    The most exciting projects I've worked on were built on the most boring foundations. Because when the infrastructure fades into the background, the application itself can shine.
+                </p>
+
+                <h2>Choose Your Battles</h2>
+                <p>
+                    In the end, users don't care how modern your stack is. They care that your product works, is fast, and doesn't lose their data. They care about the problems you solve for them, not the elegance of your database schema or the novelty of your deployment pipeline.
+                </p>
+                <p>
+                    Choose boring technology for the foundation. Save the exciting stuff for where it creates real value. Your future self—and your team—will thank you.
+                </p>
+                <p>
+                    Sometimes, the most impressive system is the one nobody notices. It just works, day after day, year after year, quietly powering the innovations that actually matter.
+                </p>
+                <p>
+                    That's the quiet power of boring technology. It's not flashy. But it's reliable. And in a world of constant change, reliability is revolutionary.
+                </p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <span>VJTV.DEV &mdash; Built with HTML, CSS &amp; spite.</span>
+            <span>&copy; 2026</span>
+        </footer>
+
+        <script src="../main.js"></script>
+    </body>
+</html>
