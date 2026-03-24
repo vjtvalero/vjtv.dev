@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>How GPT Works in 243 Lines — VJTV.DEV</title>
+        <link rel="stylesheet" href="../style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Playfair+Display:wght@700;900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            .blog-page {
+                max-width: 720px;
+                margin: 0 auto;
+                padding: 2rem clamp(1rem, 4vw, 2.5rem) 4rem;
+            }
+            .blog-back {
+                font-family: var(--font-mono);
+                font-size: 0.75rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: #555;
+                display: inline-block;
+                margin-bottom: 2rem;
+                text-decoration: underline;
+                text-underline-offset: 3px;
+            }
+            .blog-back:hover { color: var(--black); }
+            .blog-kicker {
+                font-family: var(--font-mono);
+                font-size: 0.7rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: #555;
+                margin-bottom: 0.6rem;
+            }
+            .blog-title {
+                font-family: var(--font-serif);
+                font-size: clamp(1.8rem, 5vw, 3rem);
+                font-weight: 900;
+                line-height: 1.08;
+                letter-spacing: -0.02em;
+                margin-bottom: 1rem;
+            }
+            .blog-meta {
+                font-family: var(--font-mono);
+                font-size: 0.72rem;
+                font-weight: 700;
+                color: #888;
+                border-top: var(--border);
+                border-bottom: var(--border);
+                padding: 0.5rem 0;
+                margin-bottom: 2rem;
+                display: flex;
+                gap: 1.5rem;
+            }
+            .blog-body {
+                font-size: 1rem;
+                line-height: 1.7;
+                color: #222;
+            }
+            .blog-body h2 {
+                font-family: var(--font-serif);
+                font-size: 1.4rem;
+                font-weight: 700;
+                margin: 2rem 0 0.6rem;
+                border-bottom: 2px solid var(--black);
+                padding-bottom: 0.3rem;
+            }
+            .blog-body p { margin-bottom: 1rem; }
+            .blog-body ul {
+                list-style: none;
+                padding-left: 0;
+                margin-bottom: 1rem;
+            }
+            .blog-body ul li {
+                padding: 0.2rem 0;
+                border-bottom: 1px solid rgba(0,0,0,0.08);
+            }
+            .blog-body ul li::before {
+                content: '— ';
+                font-weight: 700;
+                color: #aaa;
+            }
+            .blog-body code {
+                font-family: var(--font-mono);
+                font-size: 0.85em;
+                background: rgba(0,0,0,0.06);
+                padding: 0.1em 0.35em;
+                border: 1px solid rgba(0,0,0,0.1);
+            }
+            .blog-callout {
+                background: var(--yellow);
+                border-left: 4px solid var(--black);
+                padding: 0.8rem 1rem;
+                margin: 1.5rem 0;
+                font-weight: 500;
+            }
+            .pipeline {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                margin: 1.5rem 0;
+                border: var(--border);
+            }
+            .pipeline-step {
+                display: grid;
+                grid-template-columns: 120px 1fr;
+                border-bottom: var(--border);
+            }
+            .pipeline-step:last-child { border-bottom: none; }
+            .pipeline-label {
+                font-family: var(--font-mono);
+                font-size: 0.7rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                padding: 0.75rem 0.8rem;
+                border-right: var(--border);
+                background: rgba(0,0,0,0.03);
+                display: flex;
+                align-items: center;
+            }
+            .pipeline-desc {
+                font-size: 0.88rem;
+                padding: 0.75rem 1rem;
+                line-height: 1.5;
+            }
+            .pipeline-desc code {
+                font-size: 0.8em;
+            }
+
+            [data-theme='dark'] .blog-back { color: #aaa; }
+            [data-theme='dark'] .blog-back:hover { color: #e0dbd0; }
+            [data-theme='dark'] .blog-kicker { color: #aaa; }
+            [data-theme='dark'] .blog-meta { color: #777; }
+            [data-theme='dark'] .blog-body { color: #d4cfc6; }
+            [data-theme='dark'] .blog-body h2 { border-bottom-color: #e0dbd0; }
+            [data-theme='dark'] .blog-body ul li { border-bottom-color: rgba(255,255,255,0.08); }
+            [data-theme='dark'] .blog-body ul li::before { color: #666; }
+            [data-theme='dark'] .blog-body code {
+                background: rgba(255,255,255,0.08);
+                border-color: rgba(255,255,255,0.12);
+                color: #e0dbd0;
+            }
+            [data-theme='dark'] .blog-callout { color: #111; }
+            [data-theme='dark'] .pipeline-label { background: rgba(255,255,255,0.04); }
+        </style>
+    </head>
+    <body>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode">☀️</button>
+        <div class="blog-page">
+            <a href="/#blog" class="blog-back">&larr; Back to home</a>
+
+            <div class="blog-kicker">AI &mdash; Mar 2026</div>
+            <h1 class="blog-title">How GPT Works in 243 Lines</h1>
+            <div class="blog-meta">
+                <span>Vincent James Valero</span>
+                <span>~6 min read</span>
+            </div>
+
+            <div class="blog-body">
+                <p>
+                    Andrej Karpathy — one of the founding members of OpenAI — recently published <a href="https://karpathy.ai/microgpt.html" target="_blank">microgpt</a>: a complete, working GPT implementation in 243 lines of pure Python. No PyTorch. No NumPy. Just <code>os</code>, <code>math</code>, and <code>random</code>. It trains on 32,000 baby names and generates new ones that sound real but never existed.
+                </p>
+                <p>
+                    I went through every line. Here's what it actually does, explained for programmers with no AI background.
+                </p>
+
+                <div class="blog-callout">
+                    The same algorithm that powers ChatGPT — just stripped down to the irreducible core. Everything else in modern AI is efficiency on top of this.
+                </div>
+
+                <h2>The pipeline, step by step</h2>
+                <p>Data flows through seven distinct stages. Each one transforms the input into something the next stage can use.</p>
+
+                <div class="pipeline">
+                    <div class="pipeline-step">
+                        <div class="pipeline-label">1 · Raw data</div>
+                        <div class="pipeline-desc">Download <code>names.txt</code> — 32,000 first names, one per line. Shuffle them so training samples randomly, not alphabetically. Each name is one "document."</div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="pipeline-label">2 · Tokenizer</div>
+                        <div class="pipeline-desc">Convert text to integers. Every unique character (a–z) gets an ID. A special <code>BOS</code> token (ID 26) marks both the start and end of every name. "emma" becomes <code>[26, 4, 12, 12, 0, 26]</code>.</div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="pipeline-label">3 · Embeddings</div>
+                        <div class="pipeline-desc">Look up each token ID in a weight table (<code>wte</code>) to get a 16-number vector. Add a position vector (<code>wpe</code>) so the model knows <em>where</em> each character sits in the sequence.</div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="pipeline-label">4 · Attention</div>
+                        <div class="pipeline-desc">Each token asks: "which past tokens are relevant to me?" Three learned projections — Query, Key, Value — produce attention weights. A heatmap of who attends to whom. The model learns that double letters often appear in names, for instance.</div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="pipeline-label">5 · MLP block</div>
+                        <div class="pipeline-desc">After attention, a small feed-forward network processes each token further. Two linear layers with a <code>ReLU</code> in between. Residual connections add the output back to the input so gradients can flow cleanly during training.</div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="pipeline-label">6 · Loss &amp; backprop</div>
+                        <div class="pipeline-desc">The model predicts probabilities for the next character. Loss is <code>-log(probability of the correct answer)</code>. Then <code>loss.backward()</code> walks every calculation in reverse, computing how much each weight contributed to the mistake.</div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="pipeline-label">7 · Adam update</div>
+                        <div class="pipeline-desc">Nudge every weight in the direction that reduces loss. Adam tracks momentum (smoothing past gradients) and variance (slowing noisy parameters) — smarter than plain gradient descent.</div>
+                    </div>
+                </div>
+
+                <h2>The part that makes it all work: autograd</h2>
+                <p>
+                    The most clever piece of the code isn't the attention mechanism — it's the <code>Value</code> class. Every single number in the model is wrapped in a <code>Value</code> object. When you do math with <code>Value</code>s, it silently records how each number relates to the others, building a computation graph as a receipt of every operation.
+                </p>
+                <p>
+                    When the model makes a mistake, <code>.backward()</code> traces back through that receipt using the chain rule from calculus, filling in a <code>.grad</code> on every number. That's how the model learns — not magic, just systematic blame assignment all the way down to the raw weights.
+                </p>
+                <p>
+                    This is exactly what PyTorch's autograd does internally. microgpt just does it with plain Python floats instead of GPU tensors.
+                </p>
+
+                <h2>What "attention" actually means</h2>
+                <p>
+                    When predicting the next character after "emm", the model doesn't just look at the last letter. It looks at all previous characters simultaneously and weights their importance. Those weights are learned — the model figures out on its own that the previous "m" is the most relevant context for predicting what follows a double letter.
+                </p>
+                <p>
+                    Four attention heads run in parallel, each potentially specializing in different patterns. Their outputs are concatenated and projected back to the original dimension.
+                </p>
+
+                <h2>Inference: generating a name</h2>
+                <p>
+                    After training, generation is a loop: start with <code>BOS</code>, run the model, get a probability distribution over all 27 possible next tokens, sample one weighted by probability, feed it back in, repeat. Stop when the model predicts <code>BOS</code> again. The <code>temperature</code> parameter (set to 0.5) divides all logits before softmax — lower means more conservative, higher means more creative.
+                </p>
+
+                <h2>Why this matters</h2>
+                <p>
+                    microgpt is slow — processing one scalar at a time in pure Python. A real GPU can process millions in parallel. But the math is identical. The architecture is identical. Every concept in ChatGPT, Claude, or Gemini traces back to these same building blocks: embeddings, attention, MLP blocks, residual connections, and an optimizer nudging weights toward lower loss.
+                </p>
+                <p>
+                    If you can read this code and understand each piece, you understand the core algorithm behind all of modern AI. Karpathy called it an art project. I think it's the best single-file education in machine learning that exists.
+                </p>
+                <p>
+                    <em>Read it. Run it. Change the dataset. The knobs that matter at 243 lines are the same knobs that matter at 175 billion parameters.</em>
+                </p>
+            </div>
+        </div>
+
+        <script>
+            const toggle = document.getElementById('theme-toggle');
+            const saved = localStorage.getItem('theme');
+            if (saved) document.documentElement.setAttribute('data-theme', saved);
+            toggle.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                toggle.textContent = next === 'dark' ? '🌙' : '☀️';
+            });
+        </script>
+    </body>
+</html>
