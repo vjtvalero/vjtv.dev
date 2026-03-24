@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autoresearch on an Old Research Idea — Summary</title>
+</head>
+<body>
+  <h1>Autoresearch on an Old Research Idea — Summary</h1>
+  <p><em>Originally published by <a href="https://ykumar.me/blog/eclip-autoresearch/">ykumar.me</a> on March 22, 2026. Summarized here for reference.</em></p>
+
+  <h2>Overview</h2>
+  <p>
+    The author revisited their old research code for <strong>eCLIP</strong> — a CLIP-style vision-language model augmented
+    with expert spatial attention via Gaussian heatmaps — and handed it to <strong>Claude Code</strong> to run unsupervised
+    ML experimentation using Karpathy's <a href="https://github.com/karpathy/autoresearch">Autoresearch</a> framework.
+    The goal: let an LLM agent iteratively improve model performance while the author did weekend chores.
+  </p>
+
+  <h2>How Autoresearch Works</h2>
+  <p>
+    Autoresearch is a tight autonomous loop: <em>hypothesize → edit → train → evaluate → commit or revert → repeat</em>.
+    The LLM agent modifies a single <code>train.py</code> file, reads a <code>program.md</code> for phased instructions,
+    and keeps notes in a <code>scratchpad.md</code> as working memory. Each experiment is capped at ~5 minutes of
+    wall-clock time to encourage fast iteration.
+  </p>
+  <p>
+    To prevent the agent from doing anything dangerous, the entire training loop was containerized with network
+    access removed, and Claude Code's permissions were restricted to only editing two files and running a shell script.
+  </p>
+
+  <h2>Dataset &amp; Model</h2>
+  <p>
+    The original eCLIP paper used medical X-ray datasets (no longer available), so the author switched to the
+    <strong>Ukiyo-eVG</strong> dataset: ~11,000 Japanese woodblock prints with phrase-to-bounding-box annotations.
+    Bounding boxes were converted to Gaussian heatmaps to guide the model's spatial attention, mirroring how
+    radiologist eye-gaze data was used in the original paper.
+  </p>
+  <p>
+    Model: ViT-Small (22M) + DistilBERT (66M) + HeatmapProcessor ≈ 90M parameters total.
+    Training: 800 steps (~3 minutes per run on an RTX 4090).
+    Baseline mean rank on the validation set: <strong>344.68</strong>.
+  </p>
+
+  <h2>Results</h2>
+  <p>
+    Over one Saturday, the agent ran <strong>42 experiments</strong>, committing 13 and reverting 29.
+    By the end of the day, the mean rank had dropped from 344.68 to <strong>157.43</strong> — a <strong>54% reduction</strong>.
+    A final full-dataset training run after the agent finished improved test scores even further.
+  </p>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr><th>Split</th><th>Mean Rank</th><th>img→txt R@1</th><th>txt→img R@1</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Baseline (val)</td><td>344.68</td><td>17.2%</td><td>16.5%</td></tr>
+      <tr><td>After autoresearch (val)</td><td>157.43</td><td>—</td><td>—</td></tr>
+      <tr><td>Final (test)</td><td>34.30</td><td>53.0%</td><td>51.4%</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Key Takeaways</h2>
+  <ul>
+    <li><strong>Bug fix &gt; everything:</strong> The biggest single gain (−113 mean rank) came from the agent spotting a temperature clamping bug in the original code — worth more than all architectural changes combined.</li>
+    <li><strong>Great hyperparameter tuner:</strong> The agent methodically explored learning rates and projection dimensions, acting like a reasoning-augmented Optuna.</li>
+    <li><strong>Diminishing returns in uncharted territory:</strong> Once the agent moved into moonshot architectural ideas, success rates dropped sharply — it was essentially throwing spaghetti at the wall.</li>
+    <li><strong>Sandboxing matters:</strong> Toward the end the agent started making unexpected bash calls and occasionally gave up mid-loop. Full autonomy isn't quite there yet.</li>
+    <li><strong>Commit-or-revert works:</strong> In a well-defined search space the loop is a surprisingly effective search strategy — but it needs guardrails when venturing into unknown unknowns.</li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p>
+    The experiment demonstrated that an LLM agent can meaningfully drive ML research when the search space is structured.
+    The first 90% went smoothly; the last 10% was a slog. The author ended the run after one day — it was movie night.
+  </p>
+  <p><em>Source: <a href="https://ykumar.me/blog/eclip-autoresearch/">ykumar.me/blog/eclip-autoresearch/</a></em></p>
+</body>
+</html>
